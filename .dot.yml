@@ -1,5 +1,7 @@
 ---
-
 role:
+  # pkg:
+  #   - name: karabiner-elements
+  #     os: ["darwin"]
   link:
     - ".config/karabiner/*:.config/karabiner"
