@@ -23,7 +23,6 @@ role:
     # - rsync
     - the_silver_searcher
     - trash # rmtrash, debian: trash-cli
-    - tree
     - wget
     - youtube-dl
 
