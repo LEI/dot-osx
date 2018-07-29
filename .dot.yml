@@ -10,10 +10,11 @@ role:
     - gnu-sed --with-default-names
     - gnutls
     - grep --with-default-names
-    - gzip #
+    # - gzip
     - imagemagick --with-webp
-    - lua
-    - luajit
+    # - lua
+    # - luajit
+    # - mas # Mac App Store CLI
     - moreutils
     - nmap
     - openssh
