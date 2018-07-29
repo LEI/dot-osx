@@ -14,6 +14,15 @@
 # Disable the sound effects on boot
 # sudo nvram SystemAudioVolume=" "
 
+# Restart automatically if the computer freezes
+#sudo systemsetup -setrestartfreeze on
+
+# Never go into computer sleep mode
+#sudo systemsetup -setcomputersleep Off > /dev/null
+
+# Set the timezone; see `sudo systemsetup -listtimezones` for other values
+#sudo systemsetup -settimezone "Europe/Paris" > /dev/null
+
 defaults:
   - template: 'defaults write {{or .Domain "NSGlobalDomain"}} {{escape .Name}} {{if .Type}}-{{.Type}} {{end}}{{escape .Value}}'
     commands:
