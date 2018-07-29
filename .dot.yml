@@ -1,6 +1,6 @@
 ---
 role:
-  os: ["darwin"]
+  # os: ["darwin"]
   pkg: # Formulae
     - cmake
     - coreutils
@@ -61,4 +61,4 @@ role:
     - virtualbox
     - vlc
   link:
-    - ".config/karabiner/*:.config/karabiner"
+    - ".config/karabiner/settings.json:.config/karabiner"
