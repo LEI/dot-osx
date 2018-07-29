@@ -23,9 +23,10 @@ role:
     # - rename
     # - rsync
     - the_silver_searcher
+    - trash
     - tree
-    - unrar
-    - unzip
+    # - unrar
+    # - unzip
     - wget
     - youtube-dl
 
