@@ -10,7 +10,6 @@ role:
     - gnu-sed --with-default-names
     - gnutls
     - grep --with-default-names
-    # - gzip
     - imagemagick --with-webp
     # - lua
     # - luajit
@@ -25,8 +24,6 @@ role:
     - the_silver_searcher
     - trash # rmtrash, debian: trash-cli
     - tree
-    # - unrar
-    # - unzip
     - wget
     - youtube-dl
 
