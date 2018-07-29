@@ -1,7 +1,63 @@
 ---
 role:
-  # pkg:
-  #   - name: karabiner-elements
-  #     os: ["darwin"]
+  os: ["darwin"]
+  pkg: # Formulae
+    - cmake
+    - coreutils
+    - curl --with-openssl
+    - diffutils
+    - findutils --with-default-names
+    - gnu-sed --with-default-names
+    - gnutls
+    - grep --with-default-names
+    - gzip #
+    - imagemagick --with-webp
+    - lua
+    - luajit
+    - moreutils
+    - nmap
+    - openssh
+    - openssl
+    - patchutils
+    # - rename
+    # - rsync
+    - the_silver_searcher
+    - tree
+    - unrar
+    - unzip
+    - wget
+    - youtube-dl
+
+    - composer-completion
+    - pip-completion
+    - vagrant-completion
+
+    # Casks
+    # - bettertouchtool
+    - bitwarden
+    # - dropbox
+    - firefox
+    - font-hack
+    # - gimp
+    - google-chrome
+    # - google-chrome-canary
+    - gpgtools
+    - name: karabiner-elements
+      os: ["darwin16"]
+    # - scroll-reverser
+    - little-snitch
+    # - opera
+    # - robomongo
+    # - sequel-pro
+    # - skype
+    # - slack
+    # - steam
+    # - torbrowser
+    - transmission
+    - transmit
+    # - tunnelbear
+    - vagrant
+    - virtualbox
+    - vlc
   link:
     - ".config/karabiner/*:.config/karabiner"
