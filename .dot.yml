@@ -23,7 +23,7 @@ role:
     # - rename
     # - rsync
     - the_silver_searcher
-    - trash
+    - trash # rmtrash, debian: trash-cli
     - tree
     # - unrar
     # - unzip

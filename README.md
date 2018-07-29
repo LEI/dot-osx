@@ -1,9 +1,5 @@
 # dot-osx
 
-## Requirements
-
-- `brew install karabiner-elements`
-
 ## Manual installation
 
 Clone and change directory
@@ -17,4 +13,3 @@ Create the directory `~/.config/karabiner`
 Link files to home directory
 
     ln -isv "~/.dot/osx/.config/karabiner/*" "$HOME/.config/karabiner"
-
