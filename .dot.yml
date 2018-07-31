@@ -27,7 +27,7 @@ role:
     - wget
     - youtube-dl
 
-    - homebrew/completions/composer-completion
+    # Completions
     - pip-completion
     - vagrant-completion
 
