@@ -1,6 +1,7 @@
 ---
 role:
   # os: ["darwin"]
+  # install: brew update && brew upgrade
   pkg: # Formulae
     - cmake
     - coreutils
