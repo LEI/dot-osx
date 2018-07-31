@@ -26,9 +26,9 @@ role:
     - wget
     - youtube-dl
 
-    - composer-completion
-    - pip-completion
-    - vagrant-completion
+    # - composer-completion
+    # - pip-completion
+    # - vagrant-completion
 
     # Casks
     # - bettertouchtool
