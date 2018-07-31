@@ -27,7 +27,7 @@ role:
     - wget
     - youtube-dl
 
-    #- composer-completion
+    - homebrew/completions/composer-completion
     - pip-completion
     - vagrant-completion
 
@@ -39,7 +39,7 @@ role:
     #   type: cask
     - name: firefox
       type: cask
-    - name: font-hack
+    - name: caskroom/fonts/font-hack
       type: cask
     # - name: gimp
     #   type: cask
