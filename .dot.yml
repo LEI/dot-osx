@@ -26,36 +26,58 @@ role:
     - wget
     - youtube-dl
 
-    # - composer-completion
-    # - pip-completion
-    # - vagrant-completion
+    #- composer-completion
+    - pip-completion
+    - vagrant-completion
 
-    # Casks
-    # - bettertouchtool
-    - bitwarden
-    # - dropbox
-    - firefox
-    - font-hack
-    # - gimp
-    - google-chrome
-    # - google-chrome-canary
-    - gpgtools
+    # - name: bettertouchtool
+    #   type: cask
+    - name: bitwarden
+      type: cask
+    # - name: dropbox
+    #   type: cask
+    - name: firefox
+      type: cask
+    - name: font-hack
+      type: cask
+    # - name: gimp
+    #   type: cask
+    - name: google-chrome # -canary
+      type: cask
+    - name: gpgtools
+      type: cask
     - name: karabiner-elements
+      type: cask
       os: ["darwin16"]
-    # - scroll-reverser
-    - little-snitch
-    # - opera
-    # - robomongo
-    # - sequel-pro
-    # - skype
-    # - slack
-    # - steam
-    # - torbrowser
-    - transmission
-    - transmit
-    # - tunnelbear
-    - vagrant
-    - virtualbox
-    - vlc
+    # - name: scroll-reverser
+    #   type: cask
+    - name: little-snitch
+      type: cask
+    # - name: opera
+    #   type: cask
+    # - name: robomongo
+    #   type: cask
+    # - name: sequel-pro
+    #   type: cask
+    # - name: skype
+    #   type: cask
+    # - name: slack
+    #   type: cask
+    # - name: steam
+    #   type: cask
+    # - name: torbrowser
+    #   type: cask
+    - name: transmission
+      type: cask
+    - name: transmit
+      type: cask
+    # - name: tunnelbear
+    #   type: cask
+    - name: vagrant
+      type: cask
+    - name: virtualbox
+      type: cask
+    - name: vlc
+      type: cask
   link:
     - ".config/karabiner/settings.json:.config/karabiner"
