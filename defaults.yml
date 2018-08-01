@@ -42,13 +42,13 @@
   # Disable the sudden motion sensor as it's not useful for SSDs
   #- sudo pmset -a sms 0
 
-template: defaults write {{or .Domain "NSGlobalDomain"}} {{escape .Name}} {{if .Type}}-{{.Type}} {{end}}{{escape .Value}}
+template: defaults write {{or .Domain "NSGlobalDomain"}} {{escape .Name}} {{if .Type}}-{{.Type}} {{end}}{{toString .Value}}
 defaults:
   # https://github.com/drduh/OS-X-Security-and-Privacy-Guide
   SystemConfiguration:
 
     # Captive portal
-    Active: {sudo: true, domain: /Library/Preferences/SystemConfiguration/com.apple.captive.control, type: bool, value: true}
+    Active: {sudo: true, domain: /Library/Preferences/SystemConfiguration/com.apple.captive.control, type: bool, value: false}
 
   Finder:
 
@@ -163,14 +163,9 @@ defaults:
 
     # Expand the following File Info panes:
     # "General", "Open with", and "Sharing & Permissions"
-    # defaults write com.apple.finder FXInfoPanesExpanded -dict \
-    # General -bool true \
-    # OpenWith -bool true \
-    # Privileges -bool true
-    #
     FXInfoPanesExpanded:
       domain: com.apple.finder
-      type: dict # FIXME no dict type?
+      type: dict
       value: {General: true, OpenWith: true, Privileges: true}
 
   SystemUIServer:
@@ -325,7 +320,7 @@ defaults:
     # Set language and text formats
     # Note: if you're in the US, replace 'EUR' with 'USD', 'Centimeters' with
     # 'Inches', 'en_GB' with 'en_US', and 'true' with 'false'.
-    # AppleLanguages: {type: array, value: [en, fr]} # FIXME
+    AppleLanguages: {type: array, value: ["en-GB", "fr-FR"]}
     AppleLocale: {type: string, value: "en_GB@currency=EUR"}
     AppleMeasurementUnits: {type: string, value: "Centimeters"}
     AppleMetricUnits: {type: bool, value: true}
@@ -500,8 +495,7 @@ defaults:
     FindOnPageMatchesWordStartsOnly: {domain: com.apple.Safari, type: bool, value: false}
 
     # Remove useless icons from Safari's bookmarks bar
-    # FIXME: Expected value to be an array?
-    #ProxiesInBookmarksBar: {domain: com.apple.Safari, type: array, value: []}
+    ProxiesInBookmarksBar: {domain: com.apple.Safari, type: array, value: []}
 
     # Enable the Develop menu and the Web Inspector in Safari
     IncludeDevelopMenu: {domain: com.apple.Safari, type: bool, value: true}
@@ -534,7 +528,7 @@ defaults:
     # Disable automatic spell checking
     SpellCheckingBehavior: {domain: com.apple.mail, value: "NoSpellCheckingEnabled"}
 
-  # Spotlight
+  Spotlight:
 
     # Hide Spotlight tray-icon (and subsequent helper)
     # sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
@@ -542,7 +536,7 @@ defaults:
     # Disable Spotlight indexing for any volume that gets mounted and has not yet
     # been indexed before.
     # Use 'sudo mdutil -i off "/Volumes/foo"' to stop indexing any volume.
-    # sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
+    Exclusions: {domain: /.Spotlight-V100/VolumeConfiguration, type: array, value: "/Volumes"}
 
     # Change indexing order and disable some search results
     # Yosemite-specific search results (remove them if you are using OS X 10.9 or older):
@@ -588,16 +582,23 @@ defaults:
   Terminal:
 
     # Only use UTF-8 in Terminal.app
-    # FIXME: Expected value to be an array?
-    #StringEncodings: {domain: com.apple.terminal, type: array, value: ["4"]}
+    StringEncodings: {domain: com.apple.terminal, type: array, value: ["4"]}
 
     # Enable "focus follows mouse" for Terminal.app and all X11 apps
     # i.e. hover over a window and start typing in it without clicking first
     FocusFollowMouse: {domain: com.apple.terminal, type: bool, value: true}
     wm_ffm: {domain: org.x.X11, type: bool, value: true}
 
-    # Don't display the annoying prompt when quitting iTerm
-    # defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
+    # Enable Secure Keyboard Entry in Terminal.app
+    # See: https://security.stackexchange.com/a/47786/8918
+    SecureKeyboardEntry: {domain: com.apple.terminal, type: bool, value: true}
+
+    # Disable the annoying line marks
+    ShowLineMarks: {domain: com.apple.Terminal, type: int, value: 0}
+
+    # Don’t display the annoying prompt when quitting iTerm
+    PromptOnQuit: {domain: com.googlecode.iterm2, type: bool, value: false}
 
   Time Machine:
 
@@ -661,14 +662,16 @@ defaults:
 
   # Messages:
 
-    # Disable automatic emoji substitution (i.e. use plain text smileys)
-    # defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
-
-    # # Disable smart quotes as it's annoying for messages that contain code
-    # defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
-
-    # # Disable continuous spell checking
-    # defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
+    SOInputLineSettings:
+      domain: com.apple.messageshelper.MessageController
+      type: dict-add
+      value:
+        # Disable automatic emoji substitution (i.e. use plain text smileys)
+        automaticEmojiSubstitutionEnablediMessage: false
+        # Disable smart quotes as it's annoying for messages that contain code
+        automaticQuoteSubstitutionEnabled: false
+        # Disable continuous spell checking
+        continuousSpellCheckingEnabled: false
 
   # Google Chrome:
   # Google Chrome Canary:
