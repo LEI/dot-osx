@@ -14,7 +14,7 @@ role:
     - imagemagick --with-webp
     # - lua
     # - luajit
-    # - mas # Mac App Store CLI
+    - mas # Mac App Store CLI
     - moreutils
     - nmap
     - openssh
@@ -82,3 +82,5 @@ role:
       type: cask
   link:
     - ".config/karabiner/settings.json:.config/karabiner"
+  # post_install:
+  #   - mas uprade
