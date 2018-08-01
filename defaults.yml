@@ -163,10 +163,7 @@ defaults:
 
     # Expand the following File Info panes:
     # "General", "Open with", and "Sharing & Permissions"
-    FXInfoPanesExpanded:
-      domain: com.apple.finder
-      type: dict
-      value: {General: true, OpenWith: true, Privileges: true}
+    FXInfoPanesExpanded: {domain: com.apple.finder, type: dict, value: {General: true, OpenWith: true, Privileges: true}}
 
   SystemUIServer:
 
@@ -588,7 +585,6 @@ defaults:
     # i.e. hover over a window and start typing in it without clicking first
     FocusFollowMouse: {domain: com.apple.terminal, type: bool, value: true}
     wm_ffm: {domain: org.x.X11, type: bool, value: true}
-
 
     # Enable Secure Keyboard Entry in Terminal.app
     # See: https://security.stackexchange.com/a/47786/8918
