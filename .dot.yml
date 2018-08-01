@@ -45,7 +45,7 @@ role:
     #   type: cask
     - name: google-chrome # -canary
       type: cask
-    - name: gpgtools
+    - name: gpg-suite
       type: cask
     - name: karabiner-elements
       type: cask
