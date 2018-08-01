@@ -74,12 +74,12 @@ role:
       type: cask
     # - name: tunnelbear
     #   type: cask
-    - name: vagrant
-      type: cask
-    - name: virtualbox
-      type: cask
-    - name: vlc
-      type: cask
+    # - name: vagrant
+    #   type: cask
+    # - name: virtualbox # Fails on Travis CI
+    #   type: cask
+    # - name: vlc
+    #   type: cask
   link:
     - ".config/karabiner/settings.json:.config/karabiner"
   # post_install:
