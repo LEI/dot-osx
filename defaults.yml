@@ -48,7 +48,7 @@ defaults:
   SystemConfiguration:
 
     # Captive portal
-    Active: {domain: /Library/Preferences/SystemConfiguration/com.apple.captive.control, type: bool, value: true}
+    Active: {sudo: true, domain: /Library/Preferences/SystemConfiguration/com.apple.captive.control, type: bool, value: true}
 
   Finder:
 
