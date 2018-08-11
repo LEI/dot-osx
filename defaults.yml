@@ -382,7 +382,7 @@ defaults:
     mineffect: {domain: com.apple.dock, value: "scale"}
 
     # Minimize windows into their application's icon
-    minimize-to-application: {domain: com.apple.dock, type: bool, value: true}
+    minimize-to-application: {domain: com.apple.dock, type: bool, value: false} # true
 
     # Enable spring loading for all Dock items
     enable-spring-load-actions-on-all-items: {domain: com.apple.dock, type: bool, value: true}

@@ -80,7 +80,8 @@ role:
     #   type: cask
     # - name: vlc
     #   type: cask
+  dir: .config/karabiner
   link:
-    - ".config/karabiner/settings.json:.config/karabiner"
+    - ".config/karabiner/karabiner.json:.config/karabiner"
   # post_install:
   #   - mas uprade
