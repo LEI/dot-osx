@@ -6,17 +6,17 @@ role:
     - cmake
     - coreutils
     - name: curl
-      opts: --with-openssl
+      args: --with-openssl
     - diffutils
     - name: findutils
-      opts: --with-default-names
+      args: --with-default-names
     - name: gnu-sed
-      opts: --with-default-names
+      args: --with-default-names
     - gnutls
     - name: grep
-      opts: --with-default-names
+      args: --with-default-names
     - name: imagemagick
-      opts: --with-webp
+      args: --with-webp
     # - lua
     # - luajit
     - mas # Mac App Store CLI
