@@ -5,13 +5,18 @@ role:
   pkg: # Formulae
     - cmake
     - coreutils
-    - curl --with-openssl
+    - name: curl
+      opts: --with-openssl
     - diffutils
-    - findutils --with-default-names
-    - gnu-sed --with-default-names
+    - name: findutils
+      opts: --with-default-names
+    - name: gnu-sed
+      opts: --with-default-names
     - gnutls
-    - grep --with-default-names
-    - imagemagick --with-webp
+    - name: grep
+      opts: --with-default-names
+    - name: imagemagick
+      opts: --with-webp
     # - lua
     # - luajit
     - mas # Mac App Store CLI
