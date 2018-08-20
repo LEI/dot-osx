@@ -54,8 +54,6 @@ role:
     #   type: cask
     - name: google-chrome # -canary
       type: cask
-    - name: gpg-suite
-      type: cask
     - name: karabiner-elements
       type: cask
       os: ["darwin16"]
