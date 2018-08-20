@@ -7,6 +7,7 @@ role:
     - coreutils
     - name: curl
       args: --with-openssl
+      action: install
     - diffutils
     - name: findutils
       args: --with-default-names
@@ -24,13 +25,15 @@ role:
     - moreutils
     - nmap
     - openssh
-    - openssl
+    - name: openssl
+      action: install
     - patchutils
     # - rename
     # - rsync
     - the_silver_searcher
     - trash # rmtrash, debian: trash-cli
-    - wget
+    - name: wget
+      action: install
     - youtube-dl
 
     # Completions
