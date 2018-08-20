@@ -12,7 +12,8 @@ role:
       args: --with-default-names
     - name: gnu-sed
       args: --with-default-names
-    - gnutls
+    - name: gnutls
+      action: install
     - name: grep
       args: --with-default-names
     - name: imagemagick
