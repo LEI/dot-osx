@@ -90,5 +90,6 @@ role:
   dir: .config/karabiner
   link:
     - ".config/karabiner/karabiner.json:.config/karabiner"
-  # post_install:
-  #   - mas uprade
+  post_install:
+    # - mas uprade
+    - ./.macos
