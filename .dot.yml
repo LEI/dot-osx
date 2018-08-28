@@ -1,95 +1,23 @@
 ---
+# https://github.com/mathiasbynens/dotfiles/blob/master/brew.sh
 role:
-  # os: ["darwin"]
-  # install: brew update && brew upgrade
-  pkg: # Formulae
-    - cmake
-    - coreutils
-    - name: curl
-      args: --with-openssl
-      action: install
-    - diffutils
-    - name: findutils
-      args: --with-default-names
-    - name: gnu-sed
-      args: --with-default-names
-    - name: gnutls
-      action: install
-    - name: grep
-      args: --with-default-names
-    - name: imagemagick
-      args: --with-webp
-    # - lua
-    # - luajit
-    - mas # Mac App Store CLI
-    - moreutils
-    - nmap
-    - openssh
-    - name: openssl
-      action: install
-    - patchutils
-    # - rename
-    # - rsync
-    - the_silver_searcher
-    - trash # rmtrash, debian: trash-cli
-    - name: wget
-      action: install
-    - youtube-dl
-
-    # Completions
-    - pip-completion
-    - vagrant-completion
-
-    # - name: bettertouchtool
-    #   type: cask
-    - name: bitwarden
-      type: cask
-    # - name: dropbox
-    #   type: cask
-    - name: firefox
-      type: cask
-    - name: caskroom/fonts/font-hack
-      type: cask
-    # - name: gimp
-    #   type: cask
-    - name: google-chrome # -canary
-      type: cask
+  # os: darwin
+  pkg:
     - name: karabiner-elements
       type: cask
       os: ["darwin16"]
-    # - name: scroll-reverser
-    #   type: cask
-    - name: little-snitch
-      type: cask
-    # - name: opera
-    #   type: cask
-    # - name: robomongo
-    #   type: cask
-    # - name: sequel-pro
-    #   type: cask
-    # - name: skype
-    #   type: cask
-    # - name: slack
-    #   type: cask
-    # - name: steam
-    #   type: cask
-    # - name: torbrowser
-    #   type: cask
-    - name: transmission
-      type: cask
-    - name: transmit
-      type: cask
-    # - name: tunnelbear
-    #   type: cask
-    # - name: vagrant
-    #   type: cask
-    # - name: virtualbox # Fails on Travis CI
-    #   type: cask
-    # - name: vlc
-    #   type: cask
+    # Brew unbundle requirement (mas)
+    - name: trash
+      action: install
   dir: .config/karabiner
   link:
     - ".config/karabiner/karabiner.json:.config/karabiner"
+  install:
+    # - brew update && brew upgrade
+    - brew bundle # -f Brewfile
   post_install:
+    # - brew cleanup
     # - mas uprade
     - ./.macos
+  remove:
+    - ./brew-unbundle.sh Brewfile

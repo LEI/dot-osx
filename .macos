@@ -29,7 +29,9 @@ DISABLE_NATUAL_SCROLL=0
 
 TIMEZONE="Europe/Paris"
 
-set -x
+if [[ "$DOT_VERBOSE" = 1 ]]; then
+  set -x
+fi
 
 ###############################################################################
 # General UI/UX                                                               #
@@ -928,6 +930,7 @@ defaults write com.tapbots.TweetbotMac OpenURLsDirectly -bool true
 # Kill affected applications                                                  #
 ###############################################################################
 
+# Stop printing command if verbose is set
 set +x
 
 for app in "Activity Monitor" \
