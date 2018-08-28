@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Usage: ./brew-unbundle.sh [file]
+# Remove formulas from a Brewfile, the opposite of `brew bundle`
+
 # Similar script:
 # https://github.com/mas-cli/mas/issues/81#issuecomment-289570481
 
@@ -12,16 +15,17 @@ fi
 
 file="${1:-Brewfile}"
 
-if [ ! -f "$file" ]; then
-  echo >&2 "$0: $file: No such file"
-  exit 1
-fi
+# if [ ! -f "$file" ]; then
+#   echo >&2 "$0: $file: No such file"
+#   exit 1
+# fi
 
 while read -r line; do
   case "$line" in
     # Ignore comment lines /^#/
     \#*) continue ;;
     # Ignore lines ending with / # KEEP$/
+    # to avoid uninstalling essential packages
     *\#\ KEEP) continue ;;
     # Strip end of line comments / # *$/
     *\ \#\ *) line="${line% # *}" ;;
@@ -30,12 +34,13 @@ while read -r line; do
   esac
   # Remove everything after the first comma
   line="${line%%,*}"
+  # Strip trailing spaces # awk '{$1=$1;print}'
   line="${line%[[:blank:]]}"
-  # awk '{$1=$1;print}'
   # Retrieve first word and remove it
   word=$(echo "$line" | cut -d" " -f 1)
   name="${line#$word }"
   case "$word" in
+    # "") echo >&2 "$file: empty line"; exit 1 ;;
     brew) cmd="$word uninstall $name" ;;
     cask) cmd="brew $word uninstall $name" ;;
     tap) cmd="brew untap $name" ;;
@@ -43,5 +48,8 @@ while read -r line; do
     mas) cmd="trash /Applications/$name.app" ;;
     *) continue ;;
   esac
-  echo "> $cmd"
+  if [ "$DOT_VERBOSE" = 1 ]; then
+    echo "$cmd"
+  fi
+  $cmd
 done <"$file"

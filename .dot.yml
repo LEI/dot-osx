@@ -9,15 +9,16 @@ role:
     # Brew unbundle requirement (mas)
     - name: trash
       action: install
-  dir: .config/karabiner
+  dir:
+    - .config/karabiner
   link:
     - ".config/karabiner/karabiner.json:.config/karabiner"
   install:
     # - brew update && brew upgrade
-    - brew bundle # -f Brewfile
+    - brew bundle # --file=Brewfile
   post_install:
+    - ./.macos
     # - brew cleanup
     # - mas uprade
-    - ./.macos
   remove:
     - ./brew-unbundle.sh Brewfile
