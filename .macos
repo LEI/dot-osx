@@ -13,7 +13,11 @@ osascript -e 'tell application "System Preferences" to quit'
 sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+while true; do
+  sudo -n true
+  sleep 60
+  kill -0 "$$" || exit
+done 2>/dev/null &
 
 ###############################################################################
 # Custom settings                                                             #
@@ -29,7 +33,7 @@ DISABLE_NATUAL_SCROLL=0
 
 TIMEZONE="Europe/Paris"
 
-if [[ "$DOT_VERBOSE" = 1 ]]; then
+if [[ "$DOT_VERBOSE" == 1 ]]; then
   set -x
 fi
 
@@ -120,11 +124,11 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 sudo systemsetup -setrestartfreeze on
 
 # Never go into computer sleep mode
-sudo systemsetup -setcomputersleep Off > /dev/null
+sudo systemsetup -setcomputersleep Off >/dev/null
 
 # Disable Notification Center and remove the menu bar icon
 if [[ "$DISABLE_NOTIFICATION_CENTER" -eq 1 ]]; then
-  launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+  launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2>/dev/null
 fi
 
 # Disable automatic capitalization as it’s annoying when typing code
@@ -201,7 +205,7 @@ defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 1.5 # 1
+defaults write NSGlobalDomain KeyRepeat -int 1.5       # 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 12 # 10
 
 # Set language and text formats
@@ -217,7 +221,7 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bo
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
 if [[ -n "$TIMEZONE" ]]; then
-  sudo systemsetup -settimezone "$TIMEZONE" > /dev/null
+  sudo systemsetup -settimezone "$TIMEZONE" >/dev/null
 fi
 
 # Stop iTunes from responding to the keyboard media keys
@@ -618,11 +622,11 @@ defaults write com.apple.spotlight orderedItems -array \
   '{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
   '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
 # Load new settings before rebuilding the index
-killall mds > /dev/null 2>&1
+killall mds >/dev/null 2>&1
 # Make sure indexing is enabled for the main volume
-sudo mdutil -i on / > /dev/null
+sudo mdutil -i on / >/dev/null
 # Rebuild the index from scratch
-sudo mdutil -E / > /dev/null
+sudo mdutil -E / >/dev/null
 
 ###############################################################################
 # Terminal & iTerm 2                                                          #
@@ -704,7 +708,7 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disable local Time Machine backups
-hash tmutil &> /dev/null && sudo tmutil disablelocal
+hash tmutil &>/dev/null && sudo tmutil disablelocal
 
 ###############################################################################
 # Activity Monitor                                                            #
@@ -955,7 +959,7 @@ for app in "Activity Monitor" \
   "Tweetbot" \
   "Twitter" \
   "iCal"; do
-  killall "${app}" &> /dev/null
+  killall "${app}" &>/dev/null
 done
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
