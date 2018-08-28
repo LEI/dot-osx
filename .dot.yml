@@ -18,7 +18,8 @@ role:
     - brew bundle # --file=Brewfile
   post_install:
     - command: ./.macos
-      if: test -z $TRAVIS
+      # test -z $TRAVIS
+      if: '[ "$CI" != true ]'
     # - brew cleanup
     # - mas uprade
   remove:
