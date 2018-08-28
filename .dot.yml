@@ -17,7 +17,8 @@ role:
     # - brew update && brew upgrade
     - brew bundle # --file=Brewfile
   post_install:
-    - ./.macos
+    - command: ./.macos
+      if: test -z $TRAVIS
     # - brew cleanup
     # - mas uprade
   remove:
