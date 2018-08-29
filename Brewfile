@@ -63,4 +63,4 @@ cask "transmit"
 
 # cask "firefox", args: { appdir: "~/Applications" }
 
-# mas "App", id: xxx
+# mas "Xcode", id: 497799835
