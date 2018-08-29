@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-#set -e
+# Important: allow to interrupt execution with Ctrl-C
+set -e
 
 # Based on Mathias' macOS defaults script
 # https://github.com/mathiasbynens/dotfiles/blob/master/.macos
@@ -32,6 +33,8 @@ fi
 DISABLE_NATUAL_SCROLL=0
 
 TIMEZONE="Europe/Paris"
+
+RESTART_APPS=0
 
 if [[ "$DOT_VERBOSE" == 1 ]]; then
   set -x
@@ -937,29 +940,31 @@ defaults write com.tapbots.TweetbotMac OpenURLsDirectly -bool true
 # Stop printing command if verbose is set
 set +x
 
-for app in "Activity Monitor" \
-  "Address Book" \
-  "Calendar" \
-  "cfprefsd" \
-  "Contacts" \
-  "Dock" \
-  "Finder" \
-  "Google Chrome Canary" \
-  "Google Chrome" \
-  "Mail" \
-  "Messages" \
-  "Opera" \
-  "Photos" \
-  "Safari" \
-  "SizeUp" \
-  "Spectacle" \
-  "SystemUIServer" \
-  "Terminal" \
-  "Transmission" \
-  "Tweetbot" \
-  "Twitter" \
-  "iCal"; do
-  killall "${app}" &>/dev/null
-done
+if [[ "$RESTART_APPS" == 1 ]]; then
+  for app in "Activity Monitor" \
+    "Address Book" \
+    "Calendar" \
+    "cfprefsd" \
+    "Contacts" \
+    "Dock" \
+    "Finder" \
+    "Google Chrome Canary" \
+    "Google Chrome" \
+    "Mail" \
+    "Messages" \
+    "Opera" \
+    "Photos" \
+    "Safari" \
+    "SizeUp" \
+    "Spectacle" \
+    "SystemUIServer" \
+    "Terminal" \
+    "Transmission" \
+    "Tweetbot" \
+    "Twitter" \
+    "iCal"; do
+    killall "${app}" &>/dev/null
+  done
+fi
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
