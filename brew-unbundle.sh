@@ -41,11 +41,11 @@ while read -r line; do
   name="${line#$word }"
   case "$word" in
     # "") echo >&2 "$file: empty line"; exit 1 ;;
-    brew) cmd="$word uninstall $name" ;;
-    cask) cmd="brew $word uninstall $name" ;;
-    tap) cmd="brew untap $name" ;;
+    brew) cmd=$word uninstall $name ;;
+    cask) cmd=brew $word uninstall $name ;;
+    tap) cmd=brew untap $name ;;
     # TODO: handle custom appdir
-    mas) cmd="trash /Applications/$name.app" ;;
+    mas) cmd=trash /Applications/$name.app ;;
     *) continue ;;
   esac
   if [ "$DOT_VERBOSE" = 1 ]; then
