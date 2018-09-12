@@ -15,12 +15,13 @@ role:
     - ".config/karabiner/karabiner.json:.config/karabiner"
   install:
     # - brew update && brew upgrade
-    - brew bundle # --file=Brewfile
+    - command: brew bundle # --file=Brewfile
+      if: '[ "$DOT_PKG" -eq 1 ]'
   post_install:
-    - command: ./.macos
-      # test -z $TRAVIS
-      if: '[ "$CI" != true ]'
     # - brew cleanup
     # - mas uprade
+    - command: ./.macos
+      if: '[ "$DOT_PKG" -eq 1 ] && [ "$CI" != true ]' # test -z $TRAVIS
   remove:
-    - ./brew-unbundle.sh Brewfile
+    - command: ./brew-unbundle.sh Brewfile
+      if: '[ "$DOT_PKG" -eq 1 ]'
