@@ -24,7 +24,7 @@ while read -r line; do
   case "$line" in
     # Ignore comment lines /^#/
     \#*) continue ;;
-    # Ignore lines ending with / # KEEP$/
+    # Ignore lines matching /# KEEP$/
     # to avoid uninstalling essential packages
     *\#\ KEEP) continue ;;
     # Strip end of line comments / # *$/

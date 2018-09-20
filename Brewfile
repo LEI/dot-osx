@@ -5,9 +5,9 @@
 
 # cask_args appdir: "/Applications"
 
-brew "cmake"
+brew "cmake" # make, automake, autoconf
 brew "coreutils"
-brew "curl" , args: ["with-openssl"] # KEEP
+brew "curl" , args: ["with-openssl"] # --with-nghttp2 # KEEP
 # brew "binutils"
 brew "diffutils"
 brew "findutils" , args: ["with-default-names"]
@@ -15,25 +15,32 @@ brew "findutils" , args: ["with-default-names"]
 brew "gnu-sed" , args: ["with-default-names"]
 brew "gnutls" # KEEP
 brew "grep" , args: ["with-default-names"]
-brew "imagemagick" , args: ["with-webp"]
+brew "imagemagick" , args: ["with-webp"] # graphicsmagick
 # brew "lua"
 # brew "luajit"
 # brew "mas" # Mac App Store CLI
 brew "moreutils"
+# brew "mosh"
 brew "nmap"
 brew "openssh"
 brew "openssl" # KEEP
+# brew "pandoc"
+# brew "pass" # pwgen
 brew "patchutils"
 # brew "rename"
 # brew "rsync"
-brew "the_silver_searcher"
+# brew "syncthing" # ipfs
+brew "the_silver_searcher" # ripgrep, fd
+#brew "the-unarchiver" # p7zip
 brew "trash" # rmtrash, debian: trash-cli
 brew "wget" , args: ["with-iri"] # KEEP
 brew "youtube-dl"
 
-# Completions
-brew "pip-completion"
-brew "vagrant-completion"
+# # Completions
+# brew "brew-cask-completion"
+# brew "docker-completion"
+# brew "pip-completion"
+# brew "vagrant-completion"
 
 # cask "bettertouchtool"
 cask "bitwarden"
@@ -53,7 +60,7 @@ cask "little-snitch"
 # cask "steam"
 # cask "torbrowser"
 cask "transmission"
-# cask "transmit"
+# cask "transmit" # transmit4
 # cask "tunnelbear"
 # cask "vagrant"
 # cask "virtualbox" # Fails on Travis CI
@@ -63,5 +70,6 @@ cask "transmission"
 # install brew-cask
 
 # cask "firefox", args: { appdir: "~/Applications" }
+# cask "inkscape"
 
 # mas "Xcode", id: 497799835
