@@ -9,6 +9,7 @@ role:
     # Brew unbundle requirement (mas)
     - name: trash
       action: install
+    # https://github.com/jdberry/tag
   dir:
     - .config/karabiner
   link:
