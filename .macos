@@ -36,7 +36,7 @@ TIMEZONE="Europe/Paris"
 
 RESTART_APPS=0
 
-if [[ "$DOT_VERBOSE" == 1 ]]; then
+if [[ "$DOT_VERBOSE" -eq 1 ]]; then
   set -x
 fi
 
@@ -164,7 +164,7 @@ if [[ "$HAS_SSD" -eq 1 ]]; then
   sudo pmset -a hibernatemode 0
 
   # Remove the sleep image file to save disk space
-  sudo rm /private/var/vm/sleepimage
+  sudo rm -f /private/var/vm/sleepimage
   # Create a zero-byte file instead…
   sudo touch /private/var/vm/sleepimage
   # …and make sure it can’t be rewritten
@@ -431,6 +431,9 @@ defaults write com.apple.dock autohide -bool true
 
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
+
+# Don't show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
 
 # Disable the Launchpad gesture (pinch with thumb and three fingers)
 #defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
@@ -711,7 +714,8 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disable local Time Machine backups
-hash tmutil &>/dev/null && sudo tmutil disablelocal
+# FIXME: disablelocal: Unrecognized verb.
+#hash tmutil &>/dev/null && sudo tmutil disablelocal
 
 ###############################################################################
 # Activity Monitor                                                            #
@@ -940,7 +944,7 @@ defaults write com.tapbots.TweetbotMac OpenURLsDirectly -bool true
 # Stop printing command if verbose is set
 set +x
 
-if [[ "$RESTART_APPS" == 1 ]]; then
+if [[ "$RESTART_APPS" -eq 1 ]]; then
   for app in "Activity Monitor" \
     "Address Book" \
     "Calendar" \
@@ -963,7 +967,7 @@ if [[ "$RESTART_APPS" == 1 ]]; then
     "Tweetbot" \
     "Twitter" \
     "iCal"; do
-    killall "${app}" &>/dev/null
+    killall "${app}" &>/dev/null || true
   done
 fi
 
